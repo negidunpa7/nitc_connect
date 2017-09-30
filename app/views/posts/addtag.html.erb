@@ -1,0 +1,367 @@
+
+    
+<%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" %>
+<%= javascript_include_tag  "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" %>
+<%= javascript_include_tag  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" %>
+<%= stylesheet_link_tag "/css/navbarcss.css" %>
+
+<%= stylesheet_link_tag "/css/custom.css" %>
+
+
+ <%= stylesheet_link_tag  "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"%>
+ 
+ <%= stylesheet_link_tag  "/resources/demos/style.css"%>
+
+
+<%= javascript_include_tag  "https://code.jquery.com/jquery-1.12.4.js"%>
+ <%= javascript_include_tag  "https://code.jquery.com/ui/1.12.1/jquery-ui.js"%>
+
+
+ <% @aaa=Tag.all.pluck(:tag) %>
+  <script>
+  $( function() {
+    var availableTags = <%=raw @aaa.to_json %>;
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+
+
+
+    <div class="wrapper">
+        <!-- top nav -->
+
+        <div class="navbar navcolor">
+            <div class="navbar-header">
+
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only" style="background-color:white;">Toggle</span>
+                    <span class="icon-bar" style="background-color:white;"></span>
+                    <span class="icon-bar" style="background-color:white;"></span>
+                    <span class="icon-bar" style="background-color:white;"></span>
+                </button>
+
+                <a href="/" class="navbar-brand logo" style="position:relative;color:white;">NITC Connect</a>
+
+
+            </div>
+
+            <nav class="collapse navbar-collapse" role="navigation">
+
+                <form class="navbar-form navbar-left">
+                    <div class="input-group input-group-sm">
+
+
+
+
+
+
+                    </div>
+                </form>
+
+
+
+
+                <ul class="nav navbar-nav">
+                            <li>
+                     <%= link_to "Home", user_path(current_user) ,:style=>"color:#FFFFFF;",:class=>"home_links"%>
+</li>
+                    <li>
+                    
+                 <%= link_to 'Post', new_post_path ,:style=>"color:#FFFFFF;",:class=>"home_links"%>
+             
+                    </li>
+                    <li><%= link_to 'Edit Profile', edit_user_path(current_user),:style=>"color:#FFFFFF;",:class=>"home_links"%></li>
+
+
+
+ <li>
+
+<table class="sam">
+                      <tr>
+                        <br>
+                  <th> 
+                    <style type="text/css">
+                    .sam .btn-primary{
+
+                      background-color: #401f5b;
+                      
+                    }
+                      .sam .btn-primary:hover{
+                        background-color:#151147;
+                      }
+                    </style>
+      <div class="sam">              
+<%= link_to "Notifications", users_noti_path, method: :post ,:style=>"color:#FFFFFF;margin-top:-11px;",:class=>"glyphicon glyphicon-bell",:class=>"btn btn-primary sam",:style=>"border-style: none;margin-top: -12px;"%></th>
+<th><span class="badge" style="margin-top: -35px;background-color: white;color:red;margin-left: -13px;"><%= @noti.size %></th></span>
+</tr>
+     </div>        
+</table>
+ </li>
+
+
+
+
+
+
+
+
+
+                   
+                                        <li><%= link_to " Profile",show_path(:id=>current_user.id),:style=>"color:#FFFFFF;",:class=>"glyphicon glyphicon-user"%>
+                            
+                    </li>
+                        <div class="input-group-btn" >
+                        <div class="search" style="margin-top:20px;margin-left: -5px;">
+
+    <%= form_tag(users_search_path, :method => "post", id: "search-tag",:class=>"form-control",:style=>"display:ruby-text-container!important;width:50%;") do %>
+   <div class="ui-widget">
+  <%= text_field_tag :search, params[:search], placeholder: "Search tags",:id=>"tags"%>
+</div>
+    <%= submit_tag "Search", :name => nil ,:class=>"form-control",:style=>"margin-left: -5px;width:68px;"%>
+<% end %>   
+    
+  </div>
+    
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-right:35px;color:white;">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:#401f5b;">
+                            <li>
+    <%= link_to "Log out", logout_path, method: :delete ,:style=>"color:#FFFFFF;",:class=>"home_links"%>
+                            </li>
+                         
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- /top nav -->
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+<div class="row">
+  
+
+
+<div class="col-md-2">
+
+
+
+
+
+                
+        <!-- connect part -->
+      <% @data.each do |data|  %>       
+  <tr>
+    <%= image_tag data.profilepic.url(:thumb) %><br>
+    <td><%= data.name.capitalize %></td>  
+    <br>
+    <td><%= data.course%></td> 
+    
+    <br><td><%= button_to "Connect", users_connect_path(:curr => current_user, :conn => data, :method => 'post' ),data: { disable_with: "Connect Request Send..." },:class=>"btn btn-info"%></td><br><br>
+    
+          
+  </tr>
+  <br>
+<% end %> 
+</div>
+
+<div class="col-md-6">
+
+
+
+<% @aaa=Tag.all.pluck(:tag) %>
+  <script>
+  $( function() {
+    var availableTags = <%=raw @aaa.to_json %>;
+    $( "#tags2" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+
+
+
+
+
+
+     <%= form_tag(posts_addtags_path, :method => "post", id: "search-tag") do %>
+    <%= text_field_tag :tag_string, params[:tag_string],required: true, placeholder: "add tags" ,value: nil,:id =>"tags2"%>
+
+    <%= button_tag "Add",:name => nil ,:class=>"btn btn-success" %>
+   
+    <% end %>
+
+    <p><%=button_to 'Done', users_showuser_path( :method => 'post' ),:class=>"btn btn-primary"  %></p>
+
+
+</div>
+
+
+
+<!--right-->
+
+<div class="col-md-4">
+
+
+    <div class="col-md-12" style="color:black;">
+        <div class="panel panel-default">
+            <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>Notice Board</b>
+            </div>
+            <div class="panel-body" style="text-align: initial;">
+                <div class="row">
+                    <div class="col-md-12" >
+                        <ul class="demo2" style="overflow-y: hidden; height: 280px;color:black;text-align: initial;
+padding-left: 0px;">
+                            
+
+
+       
+<% @news.each do |news| %>
+
+                       <ol style="list-style-type:disc"> 
+                        <li><%= news.body %></li>
+                        </ol>
+
+                 <%end %>
+
+                            </li>
+                          
+
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+         </div>
+
+ <div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    Update Status
+
+                </div>
+                <div class="modal-body">
+                    <form class="form center-block">
+                        <div class="form-group">
+                          <input class="form-control input-lg" id="inputdefault" type="text" placeholder="Title of the post!!!">
+                          <br/>
+
+                  
+                            <textarea class="form-control input-lg" autofocus="" placeholder="What do you want to share?"></textarea>
+                        </div>
+                    </form>
+                  
+                  
+                  
+                
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,568 @@
+    
+ 
+
+
+
+
+
+ <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" %>
+<%= javascript_include_tag  "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" %>
+<%= javascript_include_tag  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" %>
+<%= stylesheet_link_tag "/css/navbarcss.css" %>
+
+<%= stylesheet_link_tag "/css/custom.css" %>
+
+
+ <%= stylesheet_link_tag  "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"%>
+ 
+ <%= stylesheet_link_tag  "/resources/demos/style.css"%>
+
+
+<%= javascript_include_tag  "https://code.jquery.com/jquery-1.12.4.js"%>
+ <%= javascript_include_tag  "https://code.jquery.com/ui/1.12.1/jquery-ui.js"%>
+ <% @aaa=Tag.all.pluck(:tag) %>
+  <script>
+  $( function() {
+    var availableTags = <%=raw @aaa.to_json %>;
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="wrapper">
+        <!-- top nav -->
+
+        <div class="navbar navcolor">
+            <div class="navbar-header">
+
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only" style="background-color:white;">Toggle</span>
+                    <span class="icon-bar" style="background-color:white;"></span>
+                    <span class="icon-bar" style="background-color:white;"></span>
+                    <span class="icon-bar" style="background-color:white;"></span>
+                </button>
+
+                <a href="/" class="navbar-brand logo" style="position:relative;color:white;">NITC Connect</a>
+
+
+            </div>
+
+            <nav class="collapse navbar-collapse" role="navigation">
+
+                <form class="navbar-form navbar-left">
+                    <div class="input-group input-group-sm">
+
+
+
+
+
+
+                    </div>
+                </form>
+
+
+
+
+                <ul class="nav navbar-nav">
+                            <li>
+                     <%= link_to "Home", user_path(current_user) ,:style=>"color:#FFFFFF;",:class=>"home_links"%>
+</li>
+                    <li>
+                    
+                 <%= link_to 'Post', new_post_path ,:style=>"color:#FFFFFF;",:class=>"home_links"%>
+             
+                    </li>
+                    <li><%= link_to 'Edit Profile', edit_user_path(current_user),:style=>"color:#FFFFFF;",:class=>"home_links"%></li>
+
+
+ <li>
+
+<table class="sam">
+                      <tr>
+                        <br>
+                  <th> 
+                    <style type="text/css">
+                    .sam .btn-primary{
+
+                      background-color: #401f5b;
+                      
+                    }
+                      .sam .btn-primary:hover{
+                        background-color:#151147;
+                      }
+                    </style>
+      <div class="sam">              
+<%= link_to "Notifications", users_noti_path, method: :post ,:style=>"color:#FFFFFF;margin-top:-11px;",:class=>"glyphicon glyphicon-bell",:class=>"btn btn-primary sam",:style=>"border-style: none;margin-top: -12px;"%></th>
+<th><span class="badge" style="margin-top: -35px;background-color: white;color:red;margin-left: -13px;"><%= @noti.size %></th></span>
+</tr>
+     </div>        
+</table>
+ </li>
+
+
+
+
+
+
+
+<li><%= link_to "EditTags" ,users_edittag_path,:style=>"color:#FFFFFF;",:class=>"glyphicon glyphicon-edit" %></li>
+
+                      <li><%= link_to " Profile",show_path(:id=>current_user.id),:style=>"color:#FFFFFF;",:class=>"glyphicon glyphicon-user"%>
+                            
+                    </li>
+
+                        <div class="input-group-btn" >
+                        <div class="search" style="margin-top:20px;margin-left: -5px;">
+
+    <%= form_tag(users_search_path, :method => "post", id: "search-tag",:class=>"form-control",:style=>"display:ruby-text-container!important;width:50%;") do %>
+    <div class="ui-widget">
+  <%= text_field_tag :search, params[:search], placeholder: "Search tags",:id=>"tags"%>
+</div>
+    <%= submit_tag "Search", :name => nil ,:class=>"form-control",:style=>"margin-left: -5px;width:68px;"%>
+<% end %>   
+    
+  </div>
+    
+ </div>
+
+
+
+
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-right:35px;color:white;">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:#401f5b;">
+                            <li>
+    <%= link_to "Log out", logout_path, method: :delete ,:style=>"color:#FFFFFF;",:class=>"home_links"%>
+                            </li>
+                          
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- /top nav -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <% if !logged_in? %>
+
+   <li><%= link_to "Log in", login_path %></li>
+
+    <% else %>
+
+
+
+
+   
+     
+
+
+<!--WE HAVE TO ADD TO THE MODAL-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="container">
+
+
+            <div class="row">
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-md-2">
+
+
+
+                
+        <!-- connect part -->
+      <% @data.each do |data|  %>       
+  <tr>
+    <%= link_to  image_tag(data.profilepic.url(:thumb)) ,:controller => "profile", :action => "show", :id => data.id %>
+    <td><%= data.name.capitalize %></td>  
+    <br>
+    <td><%= data.course%></td> 
+    
+    <br><td><%= button_to "Connect", users_connect_path(:curr => current_user, :conn => data, :method => 'post' ),data: { disable_with: "Connect Request Send..." },:class=>"btn btn-info"%></td><br><br>
+    
+          
+  </tr>
+  <br>
+<% end %> 
+<!--  not accepted friend request -->
+       
+
+            <!-- friend suggesions -->
+   </div>
+
+     <div class="col-md-6">
+      <!--
+WE HAVE TO WRITE POSTS CODE
+
+
+
+
+                    <div class="well">
+                        <form class="form-horizontal" role="form">
+                                <h4>What's New</h4>
+                               <form class="form center-block">
+                        <div class="form-group">
+                          <input class="form-control input-lg" id="inputdefault" type="text" placeholder="Title of the post!!!">
+                          <br/>
+
+                  
+                            <textarea class="form-control input-lg" autofocus="" placeholder="What do you want to share?"></textarea>
+                        </div>
+                    </form>
+                  
+                            <button class="btn btn-primary pull-right" type="button">Post</button>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="glyphicon glyphicon-camera"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="glyphicon glyphicon-map-marker"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+-->
+
+<% if @posts.size==0 %>
+<h2>Nothing to Display<h2>
+
+<%else %>
+<% @posts.each do |post| %>
+
+
+ <div class="panel panel-default">
+  <div class="panel-heading" style="display: flex;">
+     <a href="#" class="pull-left"><%= link_to  image_tag(post.user.profilepic.url(:thumb)) ,:controller => "profile", :action => "show", :id => post.user.id,:style => "background-size: cover;display: block;border-radius: 100px;" %> 
+
+     
+      </a><br>
+      <%@user=User.find(post.user_id)%>
+      <h5 style="text-align:left;font-size:16px;">&nbsp <b><i> <%=@user.name.capitalize%> </b></i> posted on <%= post.created_at.strftime("  %e  %b  %y :: %H : %M") %>
+
+
+
+
+<% if post.id == current_user.id %>
+<%= button_to "Remove", posts_delete_path(id: post,:method => 'post' ),data: { disable_with: "Deleted..." },:class=>"btn btn-danger btn-sm"%>
+
+
+<% end %>
+
+
+      </h5>
+                          
+                          
+                        </div>
+
+                        <div class="panel-body" style="color:black;text-align:left;">
+                       <h4>  <%= post.title %></h4>
+
+                       <%= image_tag post.photo.url(:medium) ,:alt=>"" %>
+                            <hr/><div class="clearfix"></div>
+                          <h5> <%= post.body %></h5>
+
+<br>
+
+
+
+
+
+
+  <% upvotedOrNot=post.upvotes.where(user_id: current_user).count%>
+          <% if upvotedOrNot ==0 %>
+<table>
+  <tr>
+    <th>
+  
+ <%=button_to 'Upvote', posts_upvote_path(:postid => post, :method => 'post' ),data: { disable_with: "Upvoted" }, :class=>"btn btn-primary"%></th><th>&nbsp <span class="badge"><%= @upvotecount= post.upvotes.count %></span>
+</th>
+</tr>
+</table>
+
+
+
+
+
+        <% else %>
+        <table>
+  <tr>
+    <th>
+  
+        <%=button_to 'Downvote', posts_removeupvote_path(:postid => post, :method => 'post' ),data: { disable_with: "upvote"}, :class=>"btn btn-primary"%></th><th>&nbsp <span class="badge"><%= @upvotecount= post.upvotes.count %></span>
+</tr>
+</table>
+
+
+      <% end%>
+      <br>
+        <% flagedOrNot=Flag.where(user_id: current_user, post_id: post.id).count%>
+          
+          <% if flagedOrNot ==0 %>
+      <%=button_to 'Report', posts_flagpost_path(:postid => post, :method => 'post' ),data: { disable_with: "Reported" }, :class=>"btn btn-danger"
+      %>
+      <%end%>
+      <%= render post.comments %><br>
+      <%= link_to 'Add Comment', new_post_comment_path(post)  %>
+   
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+<%end%>
+
+
+
+<%end%>
+
+
+
+<%end %>
+
+
+
+</div>
+ 
+
+                <div class="col-md-4">
+
+
+
+
+
+
+
+
+
+
+    <div class="col-md-12" style="color:black;">
+        <div class="panel panel-default">
+            <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>Notice Board</b>
+            </div>
+            <div class="panel-body" style="text-align: initial;">
+                <div class="row">
+                    <div class="col-md-12" >
+                        <ul class="demo2" style="overflow-y: hidden; height: 280px;color:black;text-align: initial;
+padding-left: 0px;">
+                            
+
+
+       
+<% @news.each do |news| %>
+
+                       <ol style="list-style-type:disc"> 
+                        <li><%= news.body %></li>
+                        </ol>
+
+                 <%end %>
+
+                            </li>
+                          
+
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         </div>
+
+ <div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    Update Status
+
+                </div>
+                <div class="modal-body">
+                    <form class="form center-block">
+                        <div class="form-group">
+                          <input class="form-control input-lg" id="inputdefault" type="text" placeholder="Title of the post!!!">
+                          <br/>
+
+                  
+                            <textarea class="form-control input-lg" autofocus="" placeholder="What do you want to share?"></textarea>
+                        </div>
+                    </form>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Post</button>
+                        <ul class="pull-left list-inline">
+                            <li>
+                                <a href="">
+                                    <i class="glyphicon glyphicon-upload"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="glyphicon glyphicon-camera"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="glyphicon glyphicon-map-marker"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

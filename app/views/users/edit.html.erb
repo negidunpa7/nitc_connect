@@ -1,0 +1,118 @@
+<% provide(:title, 'Sign up') %>
+<% if @user.errors.any? %>
+    <ul class="alert alert-danger">
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+<% end %>
+      <title>Edit your details</title>
+    
+       <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" %>
+<%= javascript_include_tag  "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" %>
+<%= javascript_include_tag  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" %>
+<%= stylesheet_link_tag "/css/navbarcss.css" %>
+
+<%= stylesheet_link_tag "/css/custom.css" %>
+
+
+ <%= stylesheet_link_tag  "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"%>
+ 
+ <%= stylesheet_link_tag  "/resources/demos/style.css"%>
+
+
+<%= javascript_include_tag  "https://code.jquery.com/jquery-1.12.4.js"%>
+ <%= javascript_include_tag  "https://code.jquery.com/ui/1.12.1/jquery-ui.js"%>
+ <% @aaa=Tag.all.pluck(:tag) %>
+  <script>
+  $( function() {
+    var availableTags = <%=raw @aaa.to_json %>;
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+
+<%= form_for(@user) do |f| %>
+
+<body style="margin: 0;
+  padding:0;
+  background:url('/assets/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  ">
+
+<!-- :url => signup_path(@user)  -->
+<div id="signupbox" style="margin-top:100px;" class="mainbox col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+<div class="panel panel-info" style="background-color: rgba(0, 0, 0, 0.7)">
+    <div class="panel-heading">
+      <div class="panel-title">Edit your details</div>
+      <div style="float:right; font-size: 85%; position: relative; top:-10px">
+       
+      </div>
+    </div>
+  <div class="panel-body" >
+  <div id="signupalert" style="display:none" class="alert alert-danger">
+                        <p>Error:</p>
+                        <span></span>
+                      </div>
+     
+
+<br/>
+      <div class="form-group">
+        <%= f.label :Name, :class=>"col-md-3 control-label"%>
+        <div class="col-md-9">
+          <%= f.text_field :name, placeholder: "Full Name",:class => "form-control", :required => true, :name=>"name" %>
+        </div>
+      </div>
+
+<br/>
+<br/>
+
+     
+
+      <div class="form-group">
+        <%= f.label :Password, :class=>"col-md-3 control-label"%>
+        <div class="col-md-9">
+          <%= f.password_field :password, placeholder: "Password", :class => "form-control", :required => true, :name=>"password" %>
+        </div>
+      </div>
+<br/>
+<br/>
+      <div class="form-group">
+        <%= f.label :'Password Confirmation', :class=>"col-md-3 control-label"%>
+        <div class="col-md-9">
+          <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", :class => "form-control", :required => true, :name=>"confirmation" %>
+        </div>
+      </div>
+<br/>
+<br/>
+
+     
+
+
+      <div class="form-group">
+        <%= f.label :'Profile Picture', :class=>"col-md-3 control-label"%>
+        <div class="col-md-9">
+          <%= f.file_field :profilepic, :class=>"custom-file-input",:required => true  %>
+          <span class="custom-file-control"></span>
+        </div>
+      </div>
+<br/>
+<br/>
+
+      
+
+ 
+      <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <%= f.submit "submit", :class=>"newbtn btn-lg btn-block", :style=>"width:117px"  %>
+        </div>
+      </div>  
+
+  </div>
+</div>
+</div>
+<% end %>
+</body>

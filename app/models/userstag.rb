@@ -1,0 +1,3 @@
+class Userstag < ApplicationRecord
+	
+end

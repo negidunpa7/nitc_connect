@@ -1,0 +1,6 @@
+ <%= form_tag(admin_addtags_path, :method => "post", id: "search-tag") do %>
+    <%= text_field_tag :tag, params[:tag], placeholder: "add tags" %>
+    <%= submit_tag "create", :name => nil %>
+    <% end %>
+
+<%= button_to "Back", admin_show_path %>

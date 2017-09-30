@@ -1,0 +1,49 @@
+    
+ <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" %>
+<%= javascript_include_tag  "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" %>
+<%= javascript_include_tag  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" %>
+
+
+</head>
+<body>
+	  
+<div class ="container">
+    <%= button_to "Back", admin_show_path ,:class=>"btn btn-primary" ,:style=>"text-align:right;"%>
+    <table class="table">
+        <thead>
+            <tr>
+            	<th>Reg No</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Profile Photo</th>
+                <th>Id card Photo</th>
+                <th>Verify/Remove</th>
+               
+            </tr>
+        </thead>
+
+        <tbody>
+<% @unverified.each do |unverified|  %>  
+        	<tr class="success">
+
+
+
+                <td> <%=unverified.rollno %></td>
+
+                <td> <%= unverified.name %></td>
+                <td> <%=unverified.email %></td>
+                <td>  <%= image_tag unverified.profilepic.url(:thumb) %></td>
+                <td>  <%= image_tag unverified.idpic.url(:thumb) %></td>
+                <td>      <%= button_to "Vefify", admin_verified_path(:usr => unverified,:method => 'post' ),data: { disable_with: "Verified..." },:class=>"btn btn-success"%> 
+   <%= button_to "Remove", admin_destroyuser_path(:usr => unverified,:method => 'post' ),data: { disable_with: "Removed..." },:class=>"btn btn-danger"%></td>
+              
+            </tr>
+     
+         <% end %> 
+        </tbody>
+    </table>
+</div>
+
+</div>
+</body>
+

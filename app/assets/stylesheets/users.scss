@@ -1,0 +1,57 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*body
+{
+	margin: 0;
+	padding:0;
+	background:url("/assets/background.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: sans-serif;
+}
+*/
+
+h4
+{
+	margin:0px;
+	padding:0px;
+	color:#F9DF05;
+}
+
+.newbtn:hover
+{
+  	box-shadow: 1px 1px #53a7ea,
+                2px 2px #53a7ea,
+                3px 3px #53a7ea;
+  	border:0px;
+	box-shadow: rgba(30, 22, 54, 0.7) 0px 0px 40px inset;
+    transform: translateX(-3px);
+	transform-origin: 0% 100%;
+ 	border-bottom: 1px solid   #54d0da  ;
+}
+
+
+
+.newbtn
+{
+   	background:#676470;
+	border:0px;
+    color:#fff; 
+    font-family:Lato;
+    text-align:center;
+    transition:all 0.3s ease;
+    
+}
+
+
+.panel
+{
+	border: 0px;
+	background: rgba(0,0,0,0.5);
+	color: #ffff;
+	text-align:center;
+	transition:1.5s;
+}
+

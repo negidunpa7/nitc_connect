@@ -1,0 +1,49 @@
+
+
+
+
+
+    
+ <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" %>
+<%= javascript_include_tag  "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" %>
+<%= javascript_include_tag  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" %>
+
+
+</head>
+<body>
+	  
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+            	<th>Posted User</th>
+                <th>Post title</th>
+                <th>Post</th>
+ 
+                <th>Remove</th>
+               
+            </tr>
+        </thead>
+
+        <tbody>
+ <% @posts.each do |post|  %>     
+           	<tr class="success">
+
+                <td> <%=post.user.name %></td>
+
+                <td> <%= post.title %></td>
+                <td> <%=post.body %></td>
+              
+                <td>               <%= button_to "Remove", admin_destroy_path(id: post,:method => 'post' ),data: { disable_with: "Deleted..." },:class=>"btn btn-danger"%> </td>
+                    <td>               <%= button_to "Ignore", admin_ignore_path(id: post,:method => 'post' ),data: { disable_with: "Ignored..." },:class=>"btn btn-success"%> </td>
+              
+            </tr>
+     
+         <% end %> 
+        </tbody>
+    </table>
+    <%= button_to "Back", admin_show_path %>
+</div>
+</div>
+</body>
+

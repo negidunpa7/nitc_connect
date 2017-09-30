@@ -1,0 +1,42 @@
+.navcolor{
+	background-color:#401f5b!important;
+	color:white!important;
+	box-sizing: border-box!important;
+	border-bottom-color: red!important;
+	
+}
+
+.navbar-nav .open .dropdown-menu > li > a{color:white;!important}
+
+.navbar-nav > li > a:hover{
+			background-color:#151147!important;
+}
+.nav > li > a:focus{ 			
+	background-color:#401f5b!important;
+}
+
+.navbar-nav > li > a:hover{background-color:#151147!important;}
+
+
+
+.navbar-nav > li > a:focus{ 			
+	background-color:#401f5b!important;
+}
+
+
+
+
+.nav .open > a, .nav .open > a:focus{
+		background-color:#401f5b!important;
+
+}
+
+
+.navbarcollapse{color:red;}
+
+
+.navbar-nav .open .dropdown-menu > li > a:hover{
+	
+	background-color:#401f5b!important;
+}
+

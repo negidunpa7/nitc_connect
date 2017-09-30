@@ -1,0 +1,18 @@
+<p>
+<% @user = User.find_by(:id => comment.user_id) %>
+ 
+  
+  <%= link_to  image_tag(@user.profilepic.url(:thumb)) ,:controller => "profile", :action => "show", :id => comment.user_id %>
+  <%= @user.name %>
+  <%= comment.body %>  
+
+   <% if logged_in? %>
+<% if comment.user_id == current_user.id %>
+   <%= link_to 'Delete', [comment.post, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' },:class=>"btn btn-danger" %>
+
+   <% end %>
+   <%end %>
+
+</p>
